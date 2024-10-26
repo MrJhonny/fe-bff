@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:7.4-apache
+    container_name: apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html
+      - ./apache-config.conf:/etc/apache2/conf-enabled/custom-config.conf
+    networks:
+      - lamp-network
+    platform: linux/amd64
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: my_user
+      MYSQL_PASSWORD: user_password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - lamp-network
+    platform: linux/amd64
+
+volumes:
+  db_data:
+
+networks:
+  lamp-network:
