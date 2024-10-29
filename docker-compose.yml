@@ -32,6 +32,22 @@ services:
       - lamp-network
     platform: linux/amd64
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: my_user
+      PMA_PASSWORD: user_password
+    platform: linux/amd64
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - lamp-network
+
 volumes:
   db_data:
 
