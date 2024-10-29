@@ -10,6 +10,7 @@ Este proyecto configura un entorno de desarrollo LAMP (Linux, Apache, MySQL, PHP
 # Iniciar los Contenedores
 
 Ejecuta el siguiente comando para levantar el entorno de desarrollo.
+
 docker-compose up --build -d
 
 # Estructura del Proyecto
