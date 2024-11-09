@@ -1,6 +1,4 @@
 <?php
-define('DB_SERVER', 'db'); 
-define('DB_USERNAME', 'my_user'); 
-define('DB_PASSWORD', 'user_password'); 
-define('DB_DATABASE', 'my_database'); 
+// Definir algunas configuraciones globales si es necesario en el futuro
+define('APP_NAME', 'Mi API de Servicios');
 ?>

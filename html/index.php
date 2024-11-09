@@ -11,13 +11,15 @@ if (isset($headers['Authorization']) && $headers['Authorization'] == 'Bearer cii
     exit;
 }
 
+header('Content-Type: application/json'); // Aseguramos que la respuesta sea JSON
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_SERVER['REQUEST_URI'] === '/v1/services/') {
     $services = getServices();
-    echo json_encode($services);
+    echo json_encode($services, JSON_PRETTY_PRINT); // Convertir a JSON
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_SERVER['REQUEST_URI'] === '/v1/about-us/') {
     $aboutUs = getAboutUs();
-    echo json_encode($aboutUs);
+    echo json_encode($aboutUs, JSON_PRETTY_PRINT); // Convertir a JSON
 }
 ?>
